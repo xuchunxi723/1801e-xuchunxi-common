@@ -10,6 +10,29 @@ import java.util.Random;
  * @date: 2020年4月23日 下午3:13:51
  */
 public class StringUtil {
+		// 判断一个字符串是否是数字 考虑整数 负数 小数
+
+		public static boolean isNumber(String src) {
+
+			String reg = "^(-)?[0-9]+(\\.[0-9]+)?$";
+			return src.matches(reg);
+		}
+
+		// 判断是否是中国的手机号
+		public static boolean isPhone(String src) {
+			// 定义规则
+			String reg = "^1[3|4|5|7|8]\\d{9}$";
+			return src.matches(reg);
+
+		}
+
+		// 判断是否邮箱
+		public static boolean isEMail(String src) {
+			// 定义规则 num2222@126.com
+			String reg = "\\w+\\@\\w+\\.\\w+";
+			return src.matches(reg);
+		}
+	
 	//方法1：判断源字符串是否有值，空引号(空白字符串)也算没值 (5分)
 	public static boolean hasLength(String src){
 		return null != src && src.length() > 0;
