@@ -1,6 +1,8 @@
 package com.xcx.common.junit;
 
 import java.util.Random;
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
 
 /**
  * 
@@ -10,6 +12,22 @@ import java.util.Random;
  * @date: 2020年4月23日 下午3:13:51
  */
 public class StringUtil {
+	/*
+	* 方法功能：根据正则在字符串提取一段值，用于后面在url地址里提取ID值。
+	* 例如在“http://news.cnstock.com/news,yw-201908-4413224.htm”把“4413224”提取出来。
+	* 
+	* regex = [0-9]+(?=[^0-9]*$)
+	*/
+	public static String getPlaceholderValue(String src, String regex){
+		
+		  Pattern p = Pattern.compile(regex);//编译规则
+		  Matcher matcher = p.matcher(src);//Pattern 匹配src
+		  if(matcher.find()) {//如果找到
+			return  matcher.group();//返回匹配到的字符串
+		  }
+		return null;
+	}
+	
 		// 判断一个字符串是否是数字 考虑整数 负数 小数
 
 		public static boolean isNumber(String src) {
